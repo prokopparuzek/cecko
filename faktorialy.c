@@ -1,5 +1,5 @@
 #include<stdio.h>
-unsigned long int i,y=1;
+unsigned int i,y=1;
 int x;
 int main()
 {
