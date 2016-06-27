@@ -10,7 +10,7 @@ for(;;)
 	prikaz[0] = 0;
 	z = 0;
 	printf("operace?\n");
-	scanf("%80s",prikaz);;
+	scanf(" %80[^\n]s",prikaz);;
 	if(!strcmp(prikaz,"konec")) break;
 	else if(!strcmp(prikaz,"zobraz napovedu"))
 	{
