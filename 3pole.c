@@ -8,7 +8,7 @@ int main(){
 				pole[a][b][c] = v;
 				v++;
 				x +=v;
-				
+
 			}
 		}
 	}

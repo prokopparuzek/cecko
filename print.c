@@ -2,6 +2,6 @@
 char num;
 int main()
 {
-printf (num);
-return 0;
+    printf (num);
+    return 0;
 }
