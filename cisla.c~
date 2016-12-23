@@ -18,7 +18,7 @@ main ()
 {
   printf ("zadejte cislo\n");
   scanf ("%d", &i);
-  if (i > 9 || i < 0)
+  if (i > 10 || i < 0)
     {
       printf ("ERROR\n");
       return 0;
