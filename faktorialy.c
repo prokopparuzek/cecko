@@ -1,3 +1,4 @@
+//#!/usr/bin/tcc -run
 #include<stdio.h>
 unsigned int i,y=1;
 int x;

@@ -1,4 +1,4 @@
-include<stdio.h>
+#include<stdio.h>
 #include<string.h>
 char bigstr[201];
 char str[51];
