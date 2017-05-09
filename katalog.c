@@ -6,11 +6,13 @@ int main()
 {
     char katalog[500][2][101];
     int i = 0;
+    int volba;
     while(1)
     {
-        int volba = 0;
+        volba = 0;
         vypis();
         scanf("%d",&volba);
+        getchar(); //vyprazdneni bufferu
         switch(volba)
         {
             case 1:
@@ -18,6 +20,9 @@ int main()
                 break;
             case 5:   
                exit(0);
+               break;
+            default:
+                puts("prosím o správný znak!");
         }       
     }   
     return 0;    
@@ -38,17 +43,24 @@ void zadani(int *i, char katalog[][2][101])
 {
     int j;
     puts("!!maximalni delka knihy / autora je 100 znaků!!");        
-    puts("zadejte data ve formátu název_knihy autor");
+    puts("zadejte data ve formátu název (tab) knihy autor");
     puts("zadání ukončíte prázdným řádkem");
     for(j = *i; j < 500; j++)
     {
-        scanf("%[\n]100s",katalog[j][0]);
-        if ( *katalog[j][0] == '\n')
+        katalog[j][0][0] = getchar();
+        if ( katalog[j][0][0] == '\n')
         {
-            *i = --j;
+            katalog[j][0][0] = 0;
+            puts("Ukoncuji zadavani.");
             break;
         }
         else
-            scanf("%100s",katalog[j][1]);              
+        {
+            //tady se to seka
+            scanf("%100s",katalog[j][0][1]);              
+            scanf("%100s",katalog[j][1][0]);              
+            getchar(); //vyprazdneni bufferu
+            getchar(); //vyprazdneni bufferu
+        }
     }
 }
