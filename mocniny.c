@@ -1,13 +1,14 @@
 #include<stdio.h>
 int co,vysledek;
 int na_co;
+int i;
 int main()
 {
 printf("zapis x^y\n");
-scanf("%d",&co);
+scanf("%d%*c",&co);
 scanf("%d",&na_co);
 vysledek = co*co;
-for(int i = 2;i < na_co;i++)
+for(i = 2;i < na_co;i++)
 {
 	vysledek = vysledek*co;
 }
