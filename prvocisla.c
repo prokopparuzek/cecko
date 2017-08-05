@@ -2,8 +2,8 @@
 #include <math.h>
 #include <stdlib.h>
 #define MIN 2
-#define MAX 1000
-#define SIZE 5
+#define MAX 30000
+#define SIZE 17
 int main()
 {
 int i = MIN;
