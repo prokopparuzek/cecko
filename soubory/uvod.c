@@ -5,7 +5,7 @@ int main()
 {
 char *str = "Hello world\n",*p;
 FILE* fp;
-char c;
+int c;
 p = str;
 if ((fp = fopen("uvod.txt","w")) == NULL)
 {
@@ -24,9 +24,9 @@ fclose(fp);
 if ((fp = fopen("uvod.txt","r")) == NULL)
 {
         puts("Nepodarilo se otevrit soubor uvod.txt!");
-        exit(1);
+        exit(3);
 }
-while ((c = fgetc(fp)) != 255) putchar(c);
+while ((c = fgetc(fp)) != EOF) putchar(c);
 fclose(fp);
 return 0;    
 }
