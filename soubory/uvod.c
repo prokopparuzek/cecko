@@ -1,4 +1,4 @@
-// fgetc() pri konci souboru vraci 255 ne EOF
+// EOF je int nutno porovnavat s intem
 #include<stdio.h>
 #include<stdlib.h>
 int main()
