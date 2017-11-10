@@ -14,9 +14,18 @@ for (i = 1; i < argc; i++)
     if ((fp = fopen(argv[i],"r")) == NULL)
     {
         printf("Nelze otevrit soubor %s pro cteni!\n",argv[i]);
-        exit(2);   
+        continue;   
     }
-    while ((c = fgetc(fp)) != EOF) putchar(c);
+    while (!feof(fp))
+    {
+        c = fgetc(fp);
+        if (ferror(fp))
+        {
+            printf("Chyba v souboru %s\n",argv[1]);
+            continue;   
+        }
+        putcchar(c);
+    }
     fclose(fp);
 }
 return 0;    
