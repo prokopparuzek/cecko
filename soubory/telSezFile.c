@@ -145,12 +145,13 @@ void precti(char seznam[][44], int* Ctrl)
     for (i = 0; i < 100; i++)
     {
         fscanf(fp,"%43[^\n]",seznam[i]);
-        if (!feof(fp))
+        fgetc(fp);
+        if (feof(fp))
         {
             break;  
         }
     }
-    seznam[i+1][0] = 0;
+    seznam[i][0] = 0;
     if(i == 99) puts("\nMoc kontaktu\n");
-    *Ctrl = ++i;
+    *Ctrl = i;
 }
