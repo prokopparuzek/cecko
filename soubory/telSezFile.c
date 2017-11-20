@@ -2,13 +2,15 @@
 #include<string.h>
 #include<stdlib.h>
 void menu(void);
-void nacti(char [][43], int*);
-void vypis(char [][43], int);
-void najdi(char [][43], int);
+void nacti(char [][44], int*);
+void vypis(char [][44], int);
+void najdi(char [][44], int);
+void uloz(char [][44], int);
+void precti(char [][44], int*);
 int main()
 {
 int sezCtrl = 0, in;
-char seznam[100][43];
+char seznam[100][44];
 while (1)
 {
 menu();
@@ -27,6 +29,14 @@ switch (in)
     case 3:
         getchar();
         najdi(seznam,sezCtrl);
+        break;
+    case 4:
+        getchar();
+        uloz(seznam,sezCtrl);
+        break;
+    case 5:
+        getchar();
+        precti(seznam,&sezCtrl);
         break;
     case 6:
         exit(0);
@@ -51,7 +61,7 @@ puts("5)\tNacteni z disku");
 puts("6)\t Konec");
 }
 
-void nacti(char seznam[][43], int *Ctrl)
+void nacti(char seznam[][44], int *Ctrl)
 {
     for (;;(*Ctrl)++)
     {
@@ -61,8 +71,7 @@ void nacti(char seznam[][43], int *Ctrl)
         getchar();
         if (*Ctrl > 99)
         {
-            puts("\nPlne pole pro seznam");
-            puts("Ulozte seznam na disk\n");
+            puts("\nPlne pole pro seznam\n");
             break;    
         }
         seznam[*Ctrl][0] = getchar();
@@ -72,7 +81,7 @@ void nacti(char seznam[][43], int *Ctrl)
     }
 }
 
-void vypis(char seznam[][43], int Ctrl)
+void vypis(char seznam[][44], int Ctrl)
 {
     int i;
     putchar('\n');
@@ -83,7 +92,7 @@ void vypis(char seznam[][43], int Ctrl)
     putchar('\n');
 }
 
-void najdi(char seznam[][43], int Ctrl)
+void najdi(char seznam[][44], int Ctrl)
 {
     auto int i, test = 0;
     auto char hJmeno[31], jmeno[31];
@@ -101,4 +110,47 @@ void najdi(char seznam[][43], int Ctrl)
         }
     }
     printf("\nNalezeno %d vysledku\n\n",test);
+}
+
+void uloz(char seznam[][44], int Ctrl)
+{
+    FILE *fp;
+    int i;
+    char* file = "telefoni_seznam.txt";
+    if ((fp = fopen(file,"w")) == NULL)
+    {
+        printf("\nNelze otevřít soubor %s pro zápis\n",file);
+        exit(1);    
+    }
+    for (i = 0; i < Ctrl; i++)
+    {
+        if (fprintf(fp,"%s\n",seznam[i]) == EOF)
+        {
+            printf("Chyba pri zapisu do souboru %s\n",file);
+            exit(2);    
+        }
+    }
+}
+
+void precti(char seznam[][44], int* Ctrl)
+{
+    FILE *fp;
+    int i;
+    char* file = "telefoni_seznam.txt";
+    if ((fp = fopen(file,"r")) == NULL)
+    {
+        printf("\nNelze otevřít soubor %s pro zápis\n",file);
+        exit(3);    
+    }
+    for (i = 0; i < 100; i++)
+    {
+        fscanf(fp,"%43[^\n]",seznam[i]);
+        if (!feof(fp))
+        {
+            break;  
+        }
+    }
+    seznam[i+1][0] = 0;
+    if(i == 99) puts("\nMoc kontaktu\n");
+    *Ctrl = ++i;
 }
