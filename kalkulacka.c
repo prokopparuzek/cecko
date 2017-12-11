@@ -28,9 +28,9 @@ for(;;)
 		z = y?x/y:0;
 		printf("vysledek je %f\n",z);
 	}
-	else if(!strcmp(prikaz,"modulo\n")){
+	else if(!strcmp(prikaz,"modulo")){
 		z = y?(int)x%(int)y:0;
-		printf("vysledek je %i\n",z);
+		printf("vysledek je %i\n",(int)z);
 	}
 	else printf("neznamy prikaz\n");
 }
@@ -43,5 +43,5 @@ printf("scitani - +\n");
 printf("odcitani - -\n");
 printf("nasobeni - *\n");
 printf("deleni - /\n");
-printf("modulo - %\n");
+printf("modulo - %%\n");
 }
