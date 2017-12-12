@@ -3,9 +3,9 @@ int main()
 {
 struct
 {
-    long int cislo;
-    long int pocet;
-    long int nejvic;    
+    unsigned long int cislo;
+    unsigned long int pocet;
+    unsigned long int nejvic;    
 } nej = {1,1,0};
 unsigned long n, i, j, vel = 1;;
 for (j = 1; j < 100000; j++)
