@@ -10,6 +10,6 @@ for (i; n != 1; i++)
     if (n % 2) n = n * 3 + 1;  
     else n /= 2;
 }
-printf("Dokonceno na %lu kroku\n",i);
+printf("1\nDokonceno na %lu kroku\n",i);
 return 0;
 }
