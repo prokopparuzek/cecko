@@ -20,14 +20,15 @@ cesta[max + 1] = 0;
 *(cesta + (k - 1)) = OPIL;
 srand((unsigned int) time(NULL));
 for (i = k - 1; i != 0 && i != max - 1;) {
+    puts(cesta);
     int r = 0;
     cesta[i] = CES;
     r = rand() % 100;
     if (r < p) i--;
     else i++;
     cesta[i] = OPIL;
-    puts(cesta);
 }
+puts(cesta);
 //if (i) exit(1);
 //else exit(0);
 if (i == 0) puts("Hospoda");
