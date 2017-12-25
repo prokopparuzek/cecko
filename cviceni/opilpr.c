@@ -19,6 +19,7 @@ memset(cesta,'_',max);
 cesta[max + 1] = 0;
 *(cesta + (k - 1)) = OPIL;
 srand((unsigned int) time(NULL));
+puts(cesta);
 for (i = k - 1; i != 0 && i != max - 1;) {
     int r = 0;
     cesta[i] = CES;
