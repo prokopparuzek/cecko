@@ -7,7 +7,6 @@
 int main(int argc, char *argv[])
 {
 int max, k, p, i;
-char cesta[max + 1];
 if (argc != 4) {
     puts("Chybny pocet argumentu!");
     exit(1);  
@@ -15,8 +14,9 @@ if (argc != 4) {
 max = atoi(argv[1]);
 k = atoi(argv[2]);
 p = atoi(argv[3]);
+char cesta[max + 1];
 memset(cesta,'_',max);
-cesta[max + 1] = 0;
+cesta[max] = 0;
 *(cesta + (k - 1)) = OPIL;
 srand((unsigned int) time(NULL));
 puts(cesta);
