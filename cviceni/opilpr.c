@@ -24,14 +24,14 @@ for (i = k - 1; i != 0 && i != max - 1;) {
     int r = 0;
     cesta[i] = CES;
     r = rand() % 100;
-    if (r < p) i--;
-    else i++;
+    if (r < p) i++;
+    else i--;
     cesta[i] = OPIL;
     puts(cesta);
 }
 //if (i) exit(1);
 //else exit(0);
-if (i == 0) puts("Hospoda");
-else puts("Doma");
+if (i == 0) puts("Doma");
+else puts("Hospoda");
 return 0;
 }
