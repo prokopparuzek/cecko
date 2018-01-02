@@ -4,8 +4,9 @@
 int main(int argc, char *argv[])
 {
 int i, j, del, delen;
-srand(time(NULL));
-if (argc == 2)
+srand(atoi(argv[2]));
+printf("Seed: %d\n",atoi(argv[2]));
+if (argc == 3)
     for (i = 0; i < atoi(argv[1]); i++){
         for (j = 0; j < 3; j++){
             del = rand() % 100;
@@ -14,7 +15,7 @@ if (argc == 2)
         }
         putchar(10);
     }
-else if (argc == 3)
+else if (argc == 4)
     for (i = 0; i < atoi(argv[1]); i++){
         for (j = 0; j < 3; j++){
             del = rand() % 100;
