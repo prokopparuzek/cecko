@@ -12,12 +12,12 @@ int main()
 unsigned long in = 0;
 puts("zadejte cele cislo");
 scanf("%lu",&in);
-printf("Soucet prvnich %d cisel = %u\n",in,soucet(in));
-printf("Faktorial %d = %d\n",in,fakt(in));
-printf("Odmocnina %d je %d\n",in,odm(in));
-printf("Ciferny soucet %d je %d\n",in, cifS(in));
-printf("V cisle %d je %d jedna\n",in,poc1(in));
-printf("Cislo %d je pozpatku %d\n",in,pozp(in));
+printf("Soucet prvnich %lu cisel = %u\n",in,soucet(in));
+printf("Faktorial %lu = %d\n",in,fakt(in));
+printf("Odmocnina %lu je %d\n",in,odm(in));
+printf("Ciferny soucet %lu je %d\n",in, cifS(in));
+printf("V cisle %lu je %d jedna\n",in,poc1(in));
+printf("Cislo %lu je pozpatku %d\n",in,pozp(in));
 printf("Cislo %lu/%lu %s platne rodne cislo\n",in / 10000, in % 10000, jeRod(in));
 return 0;    
 }
