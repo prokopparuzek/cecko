@@ -24,7 +24,8 @@ for (i = 1; i < argc; i++)
             printf("Chyba v souboru %s\n",argv[1]);
             continue;   
         }
-        putchar(c);
+        if (c != -1)
+            putchar(c);
     }
     fclose(fp);
 }
