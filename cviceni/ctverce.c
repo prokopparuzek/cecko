@@ -6,6 +6,7 @@ int main(int argc, char *argv[]) {
 int count, x, y;
 if (argc != 2) {
     puts("Spatny pocet argumentu\n zadejte pocet ctvercu!");
+    exit(1);
 }
 count = atoi(argv[1]);
 count *= 2;
