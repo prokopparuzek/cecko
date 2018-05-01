@@ -31,7 +31,10 @@ unsigned int soucet(int in)
 
 int fakt(int in)
 {
-    if (in > 12) puts("Faktorial je chybne!");
+    if (in > 12) {
+       puts("Faktorial je chybne!"); 
+       return -1;
+    }
     int i, num = 1;
     for (i = 1; i <= in; i++) num *=i;
     return num; 
