@@ -4,21 +4,18 @@
 #define ST '#'
 #define BL '.'
 int main() {
-double x, y;
-//if (sin(deg(180.0)) <= 0.0) puts("Fuck?");
-for (y = 1; y >= -1; y -= 0.1) {
-    for (x = 0; x <= 360; x += 10) {
-        if (y>0?(sin(deg(x)) >= y):(sin(deg(x)) <= y)) {
-            //printf("%d%d",(int)(sin(deg(x)) * 10),y);
+int x, y;
+for (y = 10; y >= -10; y--) {
+    for (x = 0; x <= 720; x += 10) {
+        if (y>0?(sin(deg(x)) * 10 >= y):y==0?1:(sin(deg(x)) * 10 <= y)) {
             putchar(ST);
         }
         else {
-            //printf("%d%d",(int)(sin(deg(x)) * 10),y);
             putchar(BL);
         }
 
     }  
-    printf("%4.1f",y);
+    printf("%3d",y);
     putchar('\n');
 }
 return 0;    
