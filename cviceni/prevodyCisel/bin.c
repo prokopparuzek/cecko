@@ -1,9 +1,15 @@
+/*
+Převod z desítkové do binární soustavy a zpět
+rozhoduje se podle nazvu programu
+funguje u cisel do velikosti 16 bitu
+cislo zadejte jako argument
+ */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<math.h>
-#define BIN "./toBin"
-#define DEC "./toDec"
+#define BIN "toBin"
+#define DEC "toDec"
 char *toBin(unsigned short d);
 short toDec(char* b);
 int main(int argc, char *argv[])  {
@@ -20,7 +26,6 @@ if (argc == 2)
     }
 else
     puts("Spatny pocet argumentu");
-//printf("%s\n",toBin(atoi(argv[1])));    
 return 0;
 }
 
@@ -36,11 +41,10 @@ while (d != 0) {
 return b;
 }
 
-// nefunguje strlen
 short toDec(char* b) {
 short d = 0;
 char i;
-for (i = strlen(b) - 2; i >= 0; i--)
-    d += pow(2, i) * (b[i] - '0');
+for (i = 0; i < strlen(b)  && i < 16; i++)
+    d += pow(2, strlen(b) - 1 - i) * (b[i] - '0');
 return d;
 }
