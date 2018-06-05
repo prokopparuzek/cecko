@@ -7,7 +7,7 @@ int main() {
 int x, y;
 for (y = 10; y >= -10; y--) {
     for (x = 0; x <= 720; x += 10) {
-        if (y>0?(sin(deg(x)) * 10 >= y):y==0?1:(sin(deg(x)) * 10 <= y)) {
+        if (y <= sin(deg(x)) * 10 && y >= 0 || y >= sin(deg(x)) * 10 && y <= 0) {
             putchar(ST);
         }
         else {
