@@ -24,6 +24,8 @@ while(i-- > 0) {
     line1 = line2; 
     line2 = swap;
 }
+free(line1);
+free(line2);
 return 0;    
 }
 
