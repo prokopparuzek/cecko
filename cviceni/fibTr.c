@@ -12,8 +12,8 @@ if (argc != 2) {
     puts("Chybny pocet argumentu!!!\nzadejte pocet pater");
     exit(1);    
 }
-int *line1 = malloc(atoi(argv[1]) * sizeof(int));
-int *line2 = malloc(atoi(argv[1]) * sizeof(int));
+int *line1 = (int*) malloc(atoi(argv[1]) * sizeof(int));
+int *line2 = (int*)malloc(atoi(argv[1]) * sizeof(int));
 int *swap;
 *line1 = 1;
 int i = atoi(argv[1]);
