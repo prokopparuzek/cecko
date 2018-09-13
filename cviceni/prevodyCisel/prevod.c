@@ -8,16 +8,29 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 #define TONUM 48
 #define TOCHAR 55
 
+typedef struct {
+    int *array;
+    int count;
+} Array;
+
 char *reverse(char *s);
 char *fromDec(int number, int base);
+Array parse(char *str);
+int toNum(char c);
+int toDec(char *str, int base);
 
 int main(int argc, char **argv) {
-    char *fin =  fromDec(atoi(argv[1]), atoi(argv[2])); 
-    printf("%s\n", fin);
-    free(fin);
+    if (argc != 4) {
+        puts("Špatný počet argumentů!");
+        exit(3);    
+    }
+    char *str = fromDec(toDec(argv[1], atoi(argv[2])), atoi(argv[3]));
+    printf("%s\n",str);
+    free(str);
     return 0;
 }
 
@@ -62,4 +75,38 @@ char *reverse(char *s) {
         *start = swap;
     }
     return s;
+}
+
+Array parse(char *str) {
+    Array num;
+    num.array = malloc(strlen(str));
+    num.count = strlen(str);
+    int i;
+    for (i = 0; i < strlen(str); i++) {
+        num.array[i] = toNum(str[i]);    
+    }
+    return num;
+}
+
+int toNum(char c) {
+    if (isdigit(c))
+        return c - TONUM;
+    else if (isalpha(c)) {
+        c = toupper(c);
+        return c - TOCHAR;    
+    }
+    else {
+        printf("%c není číslo!",c);
+        exit(2);
+    }
+}
+
+int toDec(char *str, int base) {
+    Array numA = parse(str);
+    int i, num = 0;
+    for (i = 0; i < numA.count; i++) {
+        num += numA.array[i] * pow(base, numA.count - i - 1); 
+    }
+    free(numA.array);
+    return num;
 }
