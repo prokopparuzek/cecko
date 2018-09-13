@@ -37,21 +37,13 @@ int main(int argc, char **argv) {
 char *fromDec(int number, int base) {
     base = abs(base);
     int count, loc = 1; // loc určuje znaménko 1 = +; 2 = -
-    if (base > 36) {
-        puts("Moc velký základ!");
+    if (base > 36 || base <= 1) {
+        puts("Chybný základ!");
         exit(1);    
     }
     if (number < 0) {
         number = abs(number);
         loc++;
-    }
-    if (base == 1) {
-        for (count = 0; count < number; count++);
-        char *str = malloc(count + loc);
-        char *p_s = str;
-        if (loc == 2) *p_s++ = '-';
-        p_s = memset(p_s,'1',count);
-        return str;    
     }
     for (count = 0; number > pow(base, count); count++);
     char *str = malloc(count + loc);
@@ -102,6 +94,17 @@ int toNum(char c) {
 }
 
 int toDec(char *str, int base) {
+    base = abs(base);
+    int loc = 0; // loc určuje znaménko 0 = +; 1 = -
+    if (base > 36 || base <= 1) {
+        puts("Chybný základ!");
+        exit(1);    
+    }
+    if (*str == '-') {
+        str++;
+        loc++;
+    }
+
     Array numA = parse(str);
     int i, num = 0;
     for (i = 0; i < numA.count; i++) {
@@ -112,5 +115,6 @@ int toDec(char *str, int base) {
         num += numA.array[i] * pow(base, numA.count - i - 1); 
     }
     free(numA.array);
+    num = loc?-num:num;
     return num;
 }
