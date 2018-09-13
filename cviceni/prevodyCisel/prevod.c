@@ -105,6 +105,10 @@ int toDec(char *str, int base) {
     Array numA = parse(str);
     int i, num = 0;
     for (i = 0; i < numA.count; i++) {
+        if (numA.array[i] >= base) {
+            puts("Číslo nepatří do vstupní soustavy");
+            exit(4);    
+        }
         num += numA.array[i] * pow(base, numA.count - i - 1); 
     }
     free(numA.array);
