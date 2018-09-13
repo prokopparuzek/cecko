@@ -96,7 +96,7 @@ int toNum(char c) {
         return c - TOCHAR;    
     }
     else {
-        printf("%c není číslo!",c);
+        printf("%c není číslo!\n",c);
         exit(2);
     }
 }
