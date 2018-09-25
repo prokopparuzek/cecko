@@ -49,7 +49,7 @@ int toArab(char *rim) {
     }
     s = rim;
     while (*s != '\0') {
-        if (getNum(*s) < getNum(*(s + 1))?getNum(*(s + 1)):0) {
+        if (getNum(*s) < (*(s + 1)?getNum(*(s + 1)):0)) {
             arab += getNum(*(s + 1)) - getNum(*s);
             s += 2;
         }
