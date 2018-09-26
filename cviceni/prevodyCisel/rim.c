@@ -105,6 +105,10 @@ int checkArab(int ara) {
         puts("Moc velké číslo!");
         exit(4);
     }
+    else if (ara <= 0) {
+        puts("Moc malé číslo");
+        exit(7);
+    }
 }
 
 int checkRoman(char *rim) {
