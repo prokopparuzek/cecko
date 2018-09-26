@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <regex.h>
 
 struct table{
     char *character;
@@ -26,7 +27,10 @@ struct table map[] = {
 
 char *toRoman(int);
 int toArab(char *);
-int getNum(char c);
+int getNum(char);
+int checkArab(int);
+int checkRoman(char *);
+int upper(char *s);
 
 int main(int argc, char **argv) {
     if (argc != 3) {
@@ -35,9 +39,12 @@ int main(int argc, char **argv) {
     }
     switch (*argv[1]) {
         case 'r':
+            checkArab(atoi(argv[2]));
             toRoman(atoi(argv[2]));
             break;
         case 'a':
+            upper(argv[2]);
+            checkRoman(argv[2]);
             toArab(argv[2]);
             break;
         default:
@@ -50,10 +57,6 @@ int main(int argc, char **argv) {
 int toArab(char *rim) {
     char *s = rim;
     int arab = 0;
-    while (*s != '\0') {
-        *s = toupper(*s);
-        s++;
-    }
     s = rim;
     while (*s != '\0') {
         if (getNum(*s) < (*(s + 1)?getNum(*(s + 1)):0)) {
@@ -71,7 +74,7 @@ int toArab(char *rim) {
 int getNum(char c){
     int i;
     char str[2] = {c, '\0'};
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < 13; i++) {
         if (!strcmp(str, map[i].character))
             return map[i].number;
         else
@@ -95,4 +98,37 @@ char *toRoman(int ara) {
     }
     printf("%s\n",rim);
     free(rim);
+}
+
+int checkArab(int ara) {
+    if (ara >= 4000) {
+        puts("Moc velké číslo!");
+        exit(4);
+    }
+}
+
+int checkRoman(char *rim) {
+    regex_t rex;
+    int ret;
+    ret = regcomp(&rex, "^M\\{0,3\\}\\(CM\\|CD\\|D\\?C\\{0,3\\}\\)\\(XC\\|XL\\|L\\?X\\{0,3\\}\\)\\(IX\\|IV\\|V\\?I\\{0,3\\}\\)$", 0);
+    if (ret) {
+        puts("Nepodařilo se vytvořit regex!");
+        exit(5);
+    }
+    ret = regexec(&rex, rim, 0, NULL, 0);
+    if (!ret) {
+        return 0;
+    }
+    else {
+        puts("Není římské číslo");
+        exit(6);
+    }
+    regfree(&rex);
+}
+
+int upper(char *s) {
+    while (*s != '\0') {
+        *s = toupper(*s);
+        s++;
+    }
 }
