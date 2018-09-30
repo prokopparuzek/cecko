@@ -78,8 +78,8 @@ char *toText(map table[], int num) {
     }
     while (num) {
         for (i = 45; table[i].num > num; i--);
-        if (strlen(table[i].str) > (count - strlen(str) + 2))
-            str = realloc(str, count *= 4);
+        while (strlen(table[i].str + 1) > (count - strlen(str) - 1))
+            str = realloc(str, count *= 2);
         if (*str != '\0')
             strcat(str, " ");
         strcat(str, table[i].str);
