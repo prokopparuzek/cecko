@@ -4,6 +4,7 @@
 #include<math.h>
 #define DELENEC 5
 #define DELITEL 2
+// 137 řádků na 2 stránky
 int main(int argc, char *argv[])
 {
 int i, j, del, delen;
