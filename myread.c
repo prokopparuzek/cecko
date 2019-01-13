@@ -13,7 +13,7 @@ if ((fp = fopen(argv[1],"r")) == NULL)
     puts("soubor se nepodařilo otevřít");
     exit(1);    
 }
-while ((ch = fgetc(fp)) != 255) putchar(ch);
+while ((ch = fgetc(fp)) != EOF) putchar(ch);
 fclose(fp);
 return 0;    
 }
