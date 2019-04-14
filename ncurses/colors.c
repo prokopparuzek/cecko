@@ -40,7 +40,7 @@ int main() {
             attroff(A_BOLD);
             attrset(COLOR_PAIR(pair));
             mvprintw(i*2 + 4, j * 12, "Normal: %d/%d", colors[i], colors[j]);
-            attrset(COLOR_PAIR(pair) | A_BOLD | A_UNDERLINE);
+            attron(A_BOLD | A_UNDERLINE);
             mvprintw(i * 2 + 5, j * 12, "Bold %d/%d   ", colors[i], colors[j]);
             pair++;
         }
@@ -51,6 +51,7 @@ int main() {
     attroff(A_BOLD);
     attrset(COLOR_PAIR(pair));
     printw("\n\nPro ukončení zmáčkněte libovolnou klávesu...");
+    printw("\něščřžýáíéúůóďťĚŠČŘŽÝÁÍÉÚŮÓĎŤ");
     refresh();
     getch();
     return 0;
