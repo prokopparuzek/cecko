@@ -9,7 +9,8 @@ void vycisti() {
 int main() {
     atexit(vycisti);
     initscr();
-    printw("Hello World!\n");
+    mvprintw(1, 1, "Hello World!\n");
     refresh();
-    sleep(5);
+    getch();
+    sleep(1);
 }
