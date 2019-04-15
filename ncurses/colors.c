@@ -53,6 +53,7 @@ int main() {
     printw("\n\nPro ukončení zmáčkněte libovolnou klávesu...");
     printw("\něščřžýáíéúůóďťĚŠČŘŽÝÁÍÉÚŮÓĎŤ");
     refresh();
+    noecho();
     getch();
     return 0;
 }
