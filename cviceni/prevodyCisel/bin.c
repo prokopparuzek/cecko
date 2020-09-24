@@ -1,6 +1,6 @@
 /*
 Převod z desítkové do binární soustavy a zpět
-rozhoduje se podle nazvu programu
+rozhoduje se podle názvu programu toBin/toDec
 funguje u kladných čísel do velikosti 64 bitu
 číslo zadejte jako argument
 číslo je třeba mít bez bílých znaků
@@ -18,25 +18,25 @@ u_int64_t toDec(char* b);
 _Bool isBin(char c);
 
 int main(int argc, char *argv[])  {
-    if (argc == 2)
+    if (argc == 2) {
         if (strcmp(argv[0],BIN) == 0) {
             // test zda obsahuje pouze čísla
-            for (char *test = argv[1]; *test; test++) 
-                if (!isdigit(*test) && !(*test == '-' && test == argv[1])){
+            for (char *test = argv[1]; *test; test++) {
+                if (!isdigit(*test) && !(*test == '-' && test == argv[1])) {
                     puts("Není číslo");
                     exit(1);
                 }
+            }
             printf("%s\n",toBin(atoi(argv[1])));    
-        }
-        else if (strcmp(argv[0],DEC) == 0) {
+        } else if (strcmp(argv[0],DEC) == 0) {
             printf("%lu\n",toDec(argv[1]));    
-        }
-        else {
+        } else {
             puts("Spatny nazev programu");
             exit(1);    
         }
-    else
+    } else {
         puts("Spatny pocet argumentu");
+    }
     return 0;
 }
 
@@ -56,18 +56,16 @@ char *toBin(u_int64_t d) {
 
 u_int64_t toDec(char* b) {
     u_int64_t d = 0;
-    char *test = b;
-    int i;
 
-    // test zda obsahuje pouze 0 a 1
-    while (*test) 
-        if (!isBin(*test++)){
+    // Převod
+    for (int i = 0; i < strlen(b)  && i < 64; i++) {
+        // test zda obsahuje pouze 0 a 1
+        if (!isBin(b[i])) {
             puts("Není binární číslo");
             exit(1);
         }
-    // Převod
-    for (i = 0; i < strlen(b)  && i < 64; i++)
         d += pow(2, strlen(b) - 1 - i) * (b[i] - '0');
+    }
     return d;
 }
 
